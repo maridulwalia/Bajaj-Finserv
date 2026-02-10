@@ -1,8 +1,9 @@
 const express = require('express');
-const { handleBFHL } = require('../controllers/bfhl.controller');
+const { handleBFHL, handleBFHLGet } = require('../controllers/bfhl.controller');
 
 const router = express.Router();
 
 router.post('/', handleBFHL);
+router.get('/', handleBFHLGet);
 
 module.exports = router;

@@ -98,6 +98,13 @@ const handleBFHL = async (req, res) => {
     }
 };
 
+const handleBFHLGet = (req, res) => {
+    return res.status(HTTP_STATUS.OK).json({
+        operation_code: 1
+    });
+};
+
 module.exports = {
     handleBFHL,
+    handleBFHLGet
 };

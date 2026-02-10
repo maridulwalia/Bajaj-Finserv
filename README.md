@@ -122,6 +122,16 @@ Then open `http://localhost:8000` in your browser.
 
 ### Endpoints
 
+#### GET `/api/bfhl`
+Returns the operation code.
+
+**Response:**
+```json
+{
+  "operation_code": 1
+}
+```
+
 #### POST `/api/bfhl`
 Main API endpoint for all operations.
 
