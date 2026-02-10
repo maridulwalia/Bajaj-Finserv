@@ -18,15 +18,15 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/bfhl', bfhlRoutes);
-app.use('/health', healthRoutes);
+app.use('/api/bfhl', bfhlRoutes);
+app.use('/api/health', healthRoutes);
 
 app.get('/', (req, res) => {
     res.json({
         message: 'University Qualifier Exam API',
         endpoints: {
-            health: 'GET /health',
-            bfhl: 'POST /bfhl',
+            health: 'GET /api/health',
+            bfhl: 'POST /api/bfhl',
         },
     });
 });

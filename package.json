@@ -1,14 +1,21 @@
 {
-  "name": "bajaj",
+  "name": "bajaj-bfhl-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "build": "echo 'No build step required'"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "keywords": [
+    "bfhl",
+    "api",
+    "university",
+    "qualifier"
+  ],
+  "author": "Maridul",
+  "license": "MIT",
+  "description": "University Qualifier Exam - BFHL API with frontend",
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
     "dotenv": "^17.2.4",

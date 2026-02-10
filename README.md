@@ -122,7 +122,7 @@ Then open `http://localhost:8000` in your browser.
 
 ### Endpoints
 
-#### POST `/bfhl`
+#### POST `/api/bfhl`
 Main API endpoint for all operations.
 
 **Request Format:**
@@ -199,7 +199,7 @@ Main API endpoint for all operations.
    }
    ```
 
-#### GET `/health`
+#### GET `/api/health`
 Health check endpoint.
 
 **Response:**
@@ -255,38 +255,60 @@ Health check endpoint.
 
 ## 🚀 Deployment
 
-### Frontend Deployment
+### Deploy to Vercel (Recommended)
 
-#### GitHub Pages
-1. Push `frontend` folder to GitHub
-2. Go to Settings → Pages
-3. Select branch and `/frontend` folder
-4. Save and access via provided URL
+This project is configured for seamless Vercel deployment with both frontend and backend in a single deployment.
 
-#### Netlify
-1. Drag and drop `frontend` folder to Netlify
-2. Or connect GitHub repository
-3. Set publish directory to `frontend`
+#### One-Click Deploy
 
-**Important**: Update the API base URL in `frontend/js/api.js` to your deployed backend URL.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/YOUR_USERNAME/YOUR_REPO)
 
-### Backend Deployment
+#### Manual Deployment
 
-#### Vercel (Recommended)
-Already configured with `vercel.json`:
-```bash
-npm install -g vercel
-vercel
-```
+1. **Install Vercel CLI** (if not already installed)
+   ```bash
+   npm install -g vercel
+   ```
 
-Set environment variables in Vercel dashboard:
-- `GEMINI_API_KEY`
-- `OFFICIAL_EMAIL`
+2. **Deploy to Vercel**
+   ```bash
+   vercel
+   ```
+   Follow the prompts to link your project.
 
-#### Other Platforms
+3. **Set Environment Variables**
+   
+   In the Vercel dashboard, go to your project → Settings → Environment Variables:
+   
+   - `GEMINI_API_KEY`: Your Google Gemini API key
+   - `OFFICIAL_EMAIL`: Your official email address
+
+4. **Redeploy** (if you added environment variables after first deployment)
+   ```bash
+   vercel --prod
+   ```
+
+#### Post-Deployment
+
+Your app will be available at `https://your-project.vercel.app`
+
+- **Frontend**: `https://your-project.vercel.app`
+- **API Health Check**: `https://your-project.vercel.app/api/health`
+- **API Endpoint**: `https://your-project.vercel.app/api/bfhl`
+
+The frontend automatically detects the production environment and uses the correct API URLs.
+
+### Alternative Deployment Options
+
+#### Other Platforms (Backend Only)
+
+If you want to deploy backend and frontend separately:
+
 - **Heroku**: Add `Procfile` with `web: node src/server.js`
 - **Railway**: Connect repository and deploy
 - **Render**: Set start command to `node src/server.js`
+
+**Note**: If deploying separately, update the API base URL detection logic in `frontend/js/api.js`.
 
 ## 🧪 Testing
 
@@ -320,54 +342,45 @@ Set environment variables in Vercel dashboard:
 
 **Health Check**
 ```bash
-curl http://localhost:3000/health
+curl http://localhost:3000/api/health
 ```
 
 **Fibonacci**
 ```bash
-curl -X POST http://localhost:3000/bfhl \
+curl -X POST http://localhost:3000/api/bfhl \
   -H "Content-Type: application/json" \
   -d '{"fibonacci": 7}'
 ```
 
 **Prime Numbers**
 ```bash
-curl -X POST http://localhost:3000/bfhl \
+curl -X POST http://localhost:3000/api/bfhl \
   -H "Content-Type: application/json" \
   -d '{"prime": [2, 4, 7, 9, 11]}'
 ```
 
 **LCM**
 ```bash
-curl -X POST http://localhost:3000/bfhl \
+curl -X POST http://localhost:3000/api/bfhl \
   -H "Content-Type: application/json" \
   -d '{"lcm": [12, 18, 24]}'
 ```
 
 **HCF**
 ```bash
-curl -X POST http://localhost:3000/bfhl \
+curl -X POST http://localhost:3000/api/bfhl \
   -H "Content-Type: application/json" \
   -d '{"hcf": [24, 36, 60]}'
 ```
 
 **AI Question**
 ```bash
-curl -X POST http://localhost:3000/bfhl \
+curl -X POST http://localhost:3000/api/bfhl \
   -H "Content-Type: application/json" \
   -d '{"AI": "What is the capital of Maharashtra?"}'
 ```
 
 ## 🔧 Configuration
-
-### Change API Base URL (Frontend)
-Edit `frontend/js/api.js`:
-```javascript
-const API_CONFIG = {
-    baseURL: 'http://localhost:3000',  // Change this to your backend URL
-    // ...
-};
-```
 
 ### Change Request Timeout (Frontend)
 Edit `frontend/js/api.js`:
@@ -377,6 +390,8 @@ const API_CONFIG = {
     timeout: 10000  // milliseconds (default: 10 seconds)
 };
 ```
+
+> **Note**: The API base URL is automatically detected based on the environment. No manual configuration needed!
 
 ## 🛠️ Technology Stack
 
