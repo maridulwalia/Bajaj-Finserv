@@ -215,8 +215,8 @@ Health check endpoint.
 **Response:**
 ```json
 {
-  "status": "OK",
-  "timestamp": "2026-02-10T06:15:30.123Z"
+  "is_success": true,
+  "official_email": "maridul1897.be23@chitkara.edu.in"
 }
 ```
 

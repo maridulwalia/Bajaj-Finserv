@@ -18,8 +18,9 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/api/bfhl', bfhlRoutes);
-app.use('/api/health', healthRoutes);
+// Use both /api prefixed routes (for Vercel) and non-prefixed (fallback)
+app.use(['/api/bfhl', '/bfhl'], bfhlRoutes);
+app.use(['/api/health', '/health'], healthRoutes);
 
 app.get('/', (req, res) => {
     res.json({
