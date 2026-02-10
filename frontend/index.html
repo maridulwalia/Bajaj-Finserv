@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="University Qualifier Exam - BFHL API Frontend">
+    <title>BFHL API - University Qualifier</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>University Qualifier Exam</h1>
+            <p class="subtitle">Backend API Integration Demo</p>
+        </header>
+
+        <main class="main-content">
+            <section class="operation-section">
+                <h2>Select Operation</h2>
+                <div class="operation-group" role="radiogroup" aria-label="Select operation">
+                    <label class="operation-option">
+                        <input type="radio" name="operation" value="fibonacci" id="op-fibonacci">
+                        <span class="option-label">Fibonacci Series</span>
+                    </label>
+                    <label class="operation-option">
+                        <input type="radio" name="operation" value="prime" id="op-prime">
+                        <span class="option-label">Prime Numbers</span>
+                    </label>
+                    <label class="operation-option">
+                        <input type="radio" name="operation" value="lcm" id="op-lcm">
+                        <span class="option-label">LCM (Least Common Multiple)</span>
+                    </label>
+                    <label class="operation-option">
+                        <input type="radio" name="operation" value="hcf" id="op-hcf">
+                        <span class="option-label">HCF (Highest Common Factor)</span>
+                    </label>
+                    <label class="operation-option">
+                        <input type="radio" name="operation" value="AI" id="op-ai">
+                        <span class="option-label">AI Question</span>
+                    </label>
+                </div>
+            </section>
+
+            <section class="input-section">
+                <h2>Enter Input</h2>
+                <div class="input-container">
+                    <label for="user-input" id="input-label" class="input-label">
+                        Select an operation first
+                    </label>
+                    <input 
+                        type="text" 
+                        id="user-input" 
+                        class="input-field" 
+                        placeholder="Select an operation to begin"
+                        disabled
+                        aria-labelledby="input-label"
+                        aria-describedby="input-error input-hint"
+                    >
+                    <p id="input-hint" class="input-hint"></p>
+                    <p id="input-error" class="input-error" role="alert" aria-live="polite"></p>
+                </div>
+            </section>
+
+            <section class="action-section">
+                <button 
+                    id="submit-btn" 
+                    class="submit-btn" 
+                    disabled
+                    aria-label="Submit request"
+                >
+                    <span class="btn-text">Submit</span>
+                    <span class="btn-loader" aria-hidden="true"></span>
+                </button>
+            </section>
+
+            <section class="result-section" id="result-section" aria-live="polite">
+                <h2>Result</h2>
+                <div id="result-content" class="result-content">
+                    <p class="result-placeholder">Results will appear here after submission</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Built with HTML, CSS, and Vanilla JavaScript</p>
+        </footer>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
